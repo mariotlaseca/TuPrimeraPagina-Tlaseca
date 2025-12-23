@@ -1,11 +1,280 @@
 <!DOCTYPE html>
-<html lang="en">
+<meta charset="UTF-8">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QamarBisuteria</title>
+    <title>Home - Qamar Bisuteria</title>
+    <link href='https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@300;400;500;600;700&display=swap' rel='stylesheet'>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Bai Jamjuree', sans-serif;
+            background-color: #EBDBCE;
+            min-height: 100vh;
+        }
+
+        /* Barra superior fija */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(90deg, #702C2B 0%, #C56869 100%);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(112, 44, 43, 0.2);
+            z-index: 1000;
+        }
+
+        .navbar .logo {
+            color: #FFFFFF;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .navbar .logo:hover {
+            color: #F3D7D4;
+        }
+
+        .navbar-right {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-nav {
+            background-color: #FFFFFF;
+            color: #702C2B;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        .btn-nav:hover {
+            background-color: #DB9F95;
+            color: #702C2B;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(112, 44, 43, 0.3);
+        }
+
+        /* Contenido principal */
+        .hero-section {
+            margin-top: 80px;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            color: #702C2B;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(112, 44, 43, 0.1);
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: #C56869;
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+
+        /* Botones principales */
+        .main-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+
+        .btn-main {
+            color: #FFFFFF;
+            border: none;
+            padding: 1.5rem 3rem;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            min-width: 200px;
+        }
+
+        .btn-main:hover {
+            transform: translateY(-5px);
+        }
+
+        .btn-main:active {
+            transform: translateY(-2px);
+        }
+
+        /* Estilos específicos por botón */
+        .btn-catalogo {
+            background-color: #DB9F95;
+            box-shadow: 0 6px 20px rgba(219, 159, 149, 0.4);
+        }
+
+        .btn-catalogo:hover {
+            background-color: #C56869;
+            box-shadow: 0 12px 30px rgba(219, 159, 149, 0.6);
+        }
+
+        .btn-promociones {
+            background-color: #DB9F95;
+            box-shadow: 0 6px 20px rgba(219, 159, 149, 0.4);
+        }
+
+        .btn-promociones:hover {
+            background-color: #C56869;
+            box-shadow: 0 12px 30px rgba(219, 159, 149, 0.6);
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #128C7E;
+            box-shadow: 0 12px 30px rgba(37, 211, 102, 0.6);
+        }
+
+        /* Sección decorativa */
+        .decorative-section {
+            margin-top: 4rem;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .features {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background-color: #FFFFFF;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(112, 44, 43, 0.1);
+            max-width: 250px;
+            transition: transform 0.3s;
+            border: 2px solid #F3D7D4;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: #C56869;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-size: 1.2rem;
+            color: #702C2B;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-text {
+            color: #C56869;
+            font-size: 0.95rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .main-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-main {
+                width: 80%;
+            }
+
+            .navbar {
+                padding: 1rem;
+            }
+
+            .navbar-right {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    Bienvenidos?
+    <!-- Barra de navegación superior fija -->
+    <nav class="navbar">
+        <a href='#' class="logo">HOME</a>
+        <div class="navbar-right">
+            <button class="btn-nav">🛒 Carrito</button>
+            <button class="btn-nav">❓ Ayuda</button>
+        </div>
+    </nav>
+
+    <!-- Sección Hero -->
+    <section class="hero-section">
+        <h1 class="hero-title">Qamar Bisuteria</h1>
+        <p class="hero-subtitle">Venta en mayoreo de Joyeria</p>
+
+        <!-- Botones principales -->
+        <div class="main-buttons">
+            <button class="btn-main btn-catalogo">📚 Catálogo</button>
+            <button class="btn-main btn-promociones">🎁 Promociones</button>
+            <button class="btn-main btn-whatsapp">💬 WhatsApp</button>
+        </div>
+    </section>
+
+    <!-- Sección de características -->
+    <section class="decorative-section">
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">💎</div>
+                <h3 class="feature-title">Calidad Premium</h3>
+                <p class="feature-text">Productos realizados con acero inoxidable de grado quirurgico</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🚚</div>
+                <h3 class="feature-title">Envío Gratis</h3>
+                <p class="feature-text">En compras mayores a 25 piezas</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3 class="feature-title">Compra Segura</h3>
+                <p class="feature-text">Protección en todas tus transacciones</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📍</div>
+                <h3 class="feature-title">Puntos de Entrega</h3>
+                <p class="feature-text">Entregas precenciales en el ciudad de Puebla</p>
+            </div>
+        </div>
+    </section>
 </body>
 </html>

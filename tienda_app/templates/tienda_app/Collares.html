@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Productos - Qamar Bisuteria</title>
+    <title>Collares - Qamar Bisuteria</title>
     <link href='https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@300;400;500;600;700&display=swap' rel='stylesheet'>
     <style>
         * {
@@ -197,23 +197,25 @@
     <!-- Sección de Catálogo -->
     <section class="catalog-section">
         <div class="catalog-header">
-            <h1 class="catalog-title">Catálogo</h1>
-            <p class="catalog-subtitle">Descubre nuestra colección exclusiva</p>
+            <h1 class="catalog-title">Catálogo de Anillos</h1>
+            <p class="catalog-subtitle">Descubre nuestros modelos de Anillos</p>
         </div>
 
         <!-- Grid de botones de productos -->
         <div class="products-grid">
-            {% for producto in Productos %}
+            {% for collar in Collares %}
             <button class="product-button">
                 <div class="product-emoji">💎</div>
-                <div class="product-type">{{ producto.tipo }}</div>
-                <div class="product-date">📅 {{ producto.fecha_de_actualizacion }}</div>
+                <div class="product-type">{{ collar.nombre }}</div>
+                <div class="product-type">{{ collar.precio }}</div>
+                <div class="product-type">{{ collar.unidades }}</div>
+                <div class="product-date">📅 {{ collar.fecha_de_actualizacion }}</div>
             </button>
             {% endfor %}
         </div>
 
         <!-- Mensaje si no hay productos -->
-        {% if not Productos %}
+        {% if not Collares %}
         <div class="no-products">
             <p>No hay productos disponibles en este momento.</p>
         </div>
