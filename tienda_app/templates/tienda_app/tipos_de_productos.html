@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<meta charset="UTF-8">
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -12,13 +11,11 @@
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: 'Bai Jamjuree', sans-serif;
             background-color: #EBDBCE;
             min-height: 100vh;
         }
-
         /* Barra superior fija */
         .navbar {
             position: fixed;
@@ -33,7 +30,6 @@
             box-shadow: 0 4px 6px rgba(112, 44, 43, 0.2);
             z-index: 1000;
         }
-
         .navbar .logo {
             color: #FFFFFF;
             font-size: 1.5rem;
@@ -41,16 +37,13 @@
             text-decoration: none;
             transition: color 0.3s;
         }
-
         .navbar .logo:hover {
             color: #F3D7D4;
         }
-
         .navbar-right {
             display: flex;
             gap: 1rem;
         }
-
         .btn-nav {
             background-color: #FFFFFF;
             color: #702C2B;
@@ -63,38 +56,83 @@
             text-decoration: none;
             font-size: 0.95rem;
         }
-
         .btn-nav:hover {
             background-color: #DB9F95;
             color: #702C2B;
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(112, 44, 43, 0.3);
         }
-
         /* Contenido principal */
         .catalog-section {
             margin-top: 80px;
             padding: 3rem 2rem;
         }
-
         .catalog-header {
             text-align: center;
             margin-bottom: 3rem;
         }
-
         .catalog-title {
             font-size: 3rem;
             color: #702C2B;
             margin-bottom: 0.5rem;
             font-weight: 700;
         }
-
         .catalog-subtitle {
             font-size: 1.2rem;
             color: #C56869;
             font-weight: 300;
         }
-
+        /* Sección de crear productos */
+        .create-section {
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+            padding: 2rem;
+            background-color: #FFFFFF;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(112, 44, 43, 0.1);
+            border: 2px solid #F3D7D4;
+        }
+        .create-title {
+            text-align: center;
+            font-size: 2rem;
+            color: #702C2B;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+        .create-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        .btn-create {
+            background-color: #C56869;
+            color: #FFFFFF;
+            border: none;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            font-size: 1rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 10px rgba(197, 104, 105, 0.3);
+        }
+        .btn-create:hover {
+            background-color: #702C2B;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(112, 44, 43, 0.4);
+        }
+        /* Divider */
+        .section-divider {
+            max-width: 1200px;
+            margin: 3rem auto;
+            border-top: 2px solid #F3D7D4;
+        }
         /* Grid de botones de productos */
         .products-grid {
             max-width: 1200px;
@@ -104,7 +142,6 @@
             gap: 2rem;
             padding: 1rem;
         }
-
         .product-button {
             background-color: #DB9F95;
             color: #FFFFFF;
@@ -120,33 +157,28 @@
             flex-direction: column;
             align-items: center;
             gap: 0.8rem;
+            text-decoration: none;
         }
-
         .product-button:hover {
             background-color: #C56869;
             transform: translateY(-5px);
             box-shadow: 0 12px 30px rgba(219, 159, 149, 0.6);
         }
-
         .product-button:active {
             transform: translateY(-2px);
         }
-
         .product-emoji {
             font-size: 4rem;
         }
-
         .product-type {
             font-size: 1.5rem;
             font-weight: 700;
         }
-
         .product-date {
             font-size: 0.9rem;
             font-weight: 400;
             opacity: 0.9;
         }
-
         /* Mensaje cuando no hay productos */
         .no-products {
             text-align: center;
@@ -154,30 +186,31 @@
             font-size: 1.2rem;
             padding: 3rem;
         }
-
         /* Responsive */
         @media (max-width: 768px) {
             .catalog-title {
                 font-size: 2rem;
             }
-
+            .create-title {
+                font-size: 1.5rem;
+            }
+            .create-buttons {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 1rem;
+            }
             .products-grid {
                 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
                 gap: 1.5rem;
             }
-
             .navbar {
                 padding: 1rem;
             }
-
             .navbar-right {
                 gap: 0.5rem;
             }
-
             .product-emoji {
                 font-size: 3rem;
             }
-
             .product-type {
                 font-size: 1.2rem;
             }
@@ -187,18 +220,39 @@
 <body>
     <!-- Barra de navegación superior fija -->
     <nav class="navbar">
-        <a href='/' class="logo">HOME</a>
+        <a href="{% url 'home' %}" class="logo">HOME</a>
         <div class="navbar-right">
             <button class="btn-nav">🛒 Carrito</button>
             <button class="btn-nav">❓ Ayuda</button>
         </div>
     </nav>
-
     <!-- Sección de Catálogo -->
     <section class="catalog-section">
         <div class="catalog-header">
-            <h1 class="catalog-title">Catálogo</h1>
+            <h1 class="catalog-title">📚 Catálogo</h1>
             <p class="catalog-subtitle">Descubre todas nuestras colecciones</p>
+        </div>
+
+        <!-- Sección para crear productos -->
+        <div class="create-section">
+            <h2 class="create-title">➕ Agregar Nuevos Productos</h2>
+            <div class="create-buttons">
+                <a href="{% url 'crear_productos' %}" class="btn-create">🛍️ Crear Producto General</a>
+                <a href="{% url 'crear_anillos' %}" class="btn-create">💍 Crear Anillo</a>
+                <a href="{% url 'crear_pulseras' %}" class="btn-create">🔗 Crear Pulsera</a>
+                <a href="{% url 'crear_collares' %}" class="btn-create">📿 Crear Collar</a>
+                <a href="{% url 'crear_combinados' %}" class="btn-create">💎 Crear Combinado</a>
+                <a href="{% url 'crear_caballeros' %}" class="btn-create">👔 Crear Caballero</a>
+                <a href="{% url 'crear_aretes' %}" class="btn-create">✨ Crear Aretes</a>
+            </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="section-divider"></div>
+
+        <!-- Título para productos existentes -->
+        <div class="catalog-header">
+            <h2 class="catalog-title" style="font-size: 2rem;">📦 Tipos de Productos</h2>
         </div>
 
         <!-- Grid de botones de productos -->
@@ -211,7 +265,6 @@
             </a>
             {% endfor %}
         </div>
-
         <!-- Mensaje si no hay productos -->
         {% if not Productos %}
         <div class="no-products">

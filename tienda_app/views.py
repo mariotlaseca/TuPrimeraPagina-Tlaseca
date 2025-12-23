@@ -6,7 +6,12 @@ def home(request):
     return render(request, "tienda_app/index.html")
 
 def lista_de_productos(request):
+    tipo = request.GET.get("tipo")
     productos_query = TiposDeProductos.objects.all()
+    if tipo:
+        productos_query = TiposDeProductos.objects.filter(
+            tipo__icontains=tipo
+        )
     contexto = {
         "Productos": productos_query,
     }
@@ -55,7 +60,6 @@ def lista_de_aretes(request):
     return render(request, "tienda_app/Aretes.html", contexto)
 
 def crear_productos(request):
-    contexto = {'form':form}
     if request.method == "POST":
         form = TiposDeProductosForm(request.POST)
         if form.is_valid():
@@ -64,10 +68,10 @@ def crear_productos(request):
     else:
         form = TiposDeProductosForm()
     
+    contexto = {'form':form}
     return render(request, 'tienda_app/crear_producto.html',contexto)
 
 def crear_anillos(request):
-    contexto = {'form':form}
     if request.method == "POST":
         form = AnillosForm(request.POST)
         if form.is_valid():
@@ -75,11 +79,10 @@ def crear_anillos(request):
             return redirect("anillos_list")
     else:
         form = AnillosForm()
-    
+    contexto = {'form':form}
     return render(request, 'tienda_app/crear_anillos.html',contexto)
 
 def crear_pulseras(request):
-    contexto = {'form':form}
     if request.method == "POST":
         form = PulserasForm(request.POST)
         if form.is_valid():
@@ -87,11 +90,10 @@ def crear_pulseras(request):
             return redirect("pulseras_list")
     else:
         form = PulserasForm()
-    
+    contexto = {'form':form}
     return render(request, 'tienda_app/crear_pulseras.html',contexto)
 
 def crear_collares(request):
-    contexto = {'form':form}
     if request.method == "POST":
         form = CollaresForm(request.POST)
         if form.is_valid():
@@ -99,11 +101,10 @@ def crear_collares(request):
             return redirect("collares_list")
     else:
         form = CollaresForm()
-    
+    contexto = {'form':form}
     return render(request, 'tienda_app/crear_collares.html',contexto)
 
 def crear_combinados(request):
-    contexto = {'form':form}
     if request.method == "POST":
         form = CombinadosForm(request.POST)
         if form.is_valid():
@@ -111,11 +112,10 @@ def crear_combinados(request):
             return redirect("combinados_list")
     else:
         form = CombinadosForm()
-    
+    contexto = {'form':form}
     return render(request, 'tienda_app/crear_combinados.html',contexto)
 
 def crear_caballeros(request):
-    contexto = {'form':form}
     if request.method == "POST":
         form = CaballerosForm(request.POST)
         if form.is_valid():
@@ -123,11 +123,10 @@ def crear_caballeros(request):
             return redirect("caballeros_list")
     else:
         form = CaballerosForm()
-    
+    contexto = {'form':form}
     return render(request, 'tienda_app/crear_caballeros.html',contexto)
 
 def crear_aretes(request):
-    contexto = {'form':form}
     if request.method == "POST":
         form = AretesForm(request.POST)
         if form.is_valid():
@@ -135,5 +134,5 @@ def crear_aretes(request):
             return redirect("aretes_list")
     else:
         form = AretesForm()
-    
+    contexto = {'form':form}
     return render(request, 'tienda_app/crear_aretes.html',contexto)
