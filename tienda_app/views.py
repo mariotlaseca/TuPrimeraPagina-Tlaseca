@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from tienda_app.models import *
+from tienda_app.forms import *
 
 def home(request):
     return render(request, "tienda_app/index.html")
@@ -52,3 +53,87 @@ def lista_de_aretes(request):
         "Aretes": aretes_query,
     }
     return render(request, "tienda_app/Aretes.html", contexto)
+
+def crear_productos(request):
+    contexto = {'form':form}
+    if request.method == "POST":
+        form = TiposDeProductosForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("product_list")
+    else:
+        form = TiposDeProductosForm()
+    
+    return render(request, 'tienda_app/crear_producto.html',contexto)
+
+def crear_anillos(request):
+    contexto = {'form':form}
+    if request.method == "POST":
+        form = AnillosForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("anillos_list")
+    else:
+        form = AnillosForm()
+    
+    return render(request, 'tienda_app/crear_anillos.html',contexto)
+
+def crear_pulseras(request):
+    contexto = {'form':form}
+    if request.method == "POST":
+        form = PulserasForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("pulseras_list")
+    else:
+        form = PulserasForm()
+    
+    return render(request, 'tienda_app/crear_pulseras.html',contexto)
+
+def crear_collares(request):
+    contexto = {'form':form}
+    if request.method == "POST":
+        form = CollaresForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("collares_list")
+    else:
+        form = CollaresForm()
+    
+    return render(request, 'tienda_app/crear_collares.html',contexto)
+
+def crear_combinados(request):
+    contexto = {'form':form}
+    if request.method == "POST":
+        form = CombinadosForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("combinados_list")
+    else:
+        form = CombinadosForm()
+    
+    return render(request, 'tienda_app/crear_combinados.html',contexto)
+
+def crear_caballeros(request):
+    contexto = {'form':form}
+    if request.method == "POST":
+        form = CaballerosForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("caballeros_list")
+    else:
+        form = CaballerosForm()
+    
+    return render(request, 'tienda_app/crear_caballeros.html',contexto)
+
+def crear_aretes(request):
+    contexto = {'form':form}
+    if request.method == "POST":
+        form = AretesForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("aretes_list")
+    else:
+        form = AretesForm()
+    
+    return render(request, 'tienda_app/crear_aretes.html',contexto)
