@@ -21,34 +21,34 @@ def lista_de_anillos(request):
 def lista_de_pulseras(request):
     pulseras_query = Pulseras.objects.all()
     contexto = {
-        "Anillos": pulseras_query,
+        "Pulseras": pulseras_query,
     }
     return render(request, "tienda_app/Pulseras.html", contexto)
 
 def lista_de_collares(request):
     collares_query = Collares.objects.all()
     contexto = {
-        "Anillos": collares_query,
+        "Collares": collares_query,
     }
     return render(request, "tienda_app/Collares.html", contexto)
 
 def lista_de_combinados(request):
     combinados_query = Combinados.objects.all()
     contexto = {
-        "Anillos": combinados_query,
+        "Combinados": combinados_query,
     }
     return render(request, "tienda_app/Combinados.html", contexto)
 
 def lista_de_caballeros(request):
     caballeros_query = Caballeros.objects.all()
     contexto = {
-        "Anillos": caballeros_query,
+        "Caballeros": caballeros_query,
     }
     return render(request, "tienda_app/Caballeros.html", contexto)
 
 def lista_de_aretes(request):
     aretes_query = Aretes.objects.all()
     contexto = {
-        "Anillos": aretes_query,
+        "Aretes": aretes_query,
     }
     return render(request, "tienda_app/Aretes.html", contexto)

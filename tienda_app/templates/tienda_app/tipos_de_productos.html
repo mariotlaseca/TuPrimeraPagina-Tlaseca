@@ -198,17 +198,17 @@
     <section class="catalog-section">
         <div class="catalog-header">
             <h1 class="catalog-title">Catálogo</h1>
-            <p class="catalog-subtitle">Descubre nuestra colección exclusiva</p>
+            <p class="catalog-subtitle">Descubre todas nuestras colecciones</p>
         </div>
 
         <!-- Grid de botones de productos -->
         <div class="products-grid">
             {% for producto in Productos %}
-            <button class="product-button">
+            <a href="{% url producto.tipo|lower|add:'_list' %}" class="product-button">
                 <div class="product-emoji">💎</div>
                 <div class="product-type">{{ producto.tipo }}</div>
                 <div class="product-date">📅 {{ producto.fecha_de_actualizacion }}</div>
-            </button>
+            </a>
             {% endfor %}
         </div>
 
